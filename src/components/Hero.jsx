@@ -1,21 +1,60 @@
 import React from "react";
-import "../App.css"; 
-import hero from "../assets/hero.jpg"; // import the image
+import { motion } from "framer-motion";
+import "../App.css";
+import hero from "../assets/hero.jpg";
 
 const Hero = () => {
   return (
-    <section className="hero">
+    <section
+      className="hero"
+      style={{ backgroundImage: `url(${hero})` }}
+    >
+      <div className="overlay"></div>
+
       <div className="hero-content">
-        <h1>
-          Transform Your Body. <br /> Transform Your Life.
-        </h1>
-        <p>
+        
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          TRANSFORM YOUR BODY. <br /> TRANSFORM YOUR LIFE.
+        </motion.h1>
+
+        {/* Subheading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           Train harder. Get stronger. <br /> Achieve your goals!
-        </p>
-        <div className="hero-buttons">
-          <button className="hero-btn">Get Started</button>
-          <button className="hero-btn1">Watch Reviews</button>
-        </div>
+        </motion.h2>
+
+        {/* Buttons */}
+        <motion.div
+          className="hero-buttons"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.button
+            className="hero-btn"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            GET STARTED
+          </motion.button>
+
+          <motion.button
+            className="hero-btn1"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            WATCH REVIEWS
+          </motion.button>
+        </motion.div>
+
       </div>
     </section>
   );

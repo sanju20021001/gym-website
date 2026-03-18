@@ -84,40 +84,123 @@ body {
   background: #b89014;  
 }
 
-/* ================= HERO ================= */
+/* Hero section */
 .hero {
-  background: url('https://images.unsplash.com/photo-1554284126-0c95e3b83a60?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
-  height: 80vh;
+  position: relative;
+  height: 100vh; 
+  background: url('../assets/hero.jpg') no-repeat center center;
+  background-size: cover;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: center; 
   color: white;
-  text-align: center;
+  text-align: left; 
+  overflow: hidden;
+  justify-content: flex-start;
+  padding-left: 150px;
 }
 
+/* Overlay for readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+/* Hero content on top of image */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+/* Headings & paragraph */
 .hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 0.1rem;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start; 
+  margin-top: 50px;
 }
 
 .hero-btn {
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
-  background-color: #ffcc00;
+  background: linear-gradient(to right, #d4a017, black);
+  color: white;
   border: none;
-  border-radius: 5px;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .hero-btn:hover {
-  background-color: #e6b800;
+  transform: scale(1.05);
 }
 
+.hero-btn1 {
+  background: linear-gradient(to right, #d4a017, black);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-btn1:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    justify-content: center; /* center on mobile */
+    text-align: center;
+    padding-left: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+  }
+}
+/* Fade + slide up animation */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* ================= CENTER ================= */
 #center {
   display: flex;
