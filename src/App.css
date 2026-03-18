@@ -651,6 +651,71 @@ input[type=number]::-webkit-outer-spin-button {
   text-decoration: none;
 }
 
+/* SECTION TITLES */
+.membership-section h2,
+.trainers-section h2 {
+  font-size: 36px;
+  margin-bottom: 50px;
+  color: var(--text-h);
+}
+
+/* CARD CONTAINER */
+.membership-section .cards,
+.trainers-section .cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* CARD STYLE */
+.membership-section .card,
+.trainers-section .card {
+  background: linear-gradient(145deg, #111, var(--bg));
+  padding: 30px 25px;
+  border-radius: 15px;
+  width: 250px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* HOVER EFFECT */
+.membership-section .card:hover,
+.trainers-section .card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(212, 160, 23, 0.25);
+  border: 1px solid var(--accent);
+}
+
+/* MEMBERSHIP TEXT */
+.membership-section .card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--text-h);
+}
+
+.membership-section .card p {
+  font-size: 18px;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* TRAINER TEXT */
+.trainers-section .card {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* HIGHLIGHT MIDDLE PLAN */
+.membership-section .card:nth-child(2) {
+  transform: scale(1.05);
+  border: 1px solid var(--accent);
+}
+
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
   .navbar {
