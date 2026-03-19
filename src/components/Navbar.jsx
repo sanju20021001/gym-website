@@ -20,15 +20,16 @@ export default function Navbar() {
       document.body.classList.remove("dark"); 
     }
   };
-    const toggleMenu = () => {
+
+  const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
 
   return (
     <nav className="navbar">
       <div className="logo">
         <img src={logo} alt="logo" />
+        <span className="logo-text">FitHive</span> {/* Added website name */}
       </div>
 
       <ul className={menuOpen ? "nav-links active" : "nav-links"}>
@@ -57,13 +58,13 @@ export default function Navbar() {
             {darkMode ? "Light Mode" : "Dark Mode"}
           </button>
         </li>
-      
+      </ul>
+
       <div className="menu-icon" onClick={toggleMenu}>
         <div className={`bar ${menuOpen ? "open" : ""}`}></div>
         <div className={`bar ${menuOpen ? "open" : ""}`}></div>
         <div className={`bar ${menuOpen ? "open" : ""}`}></div>
       </div>
-      </ul>
     </nav>
   );
 }

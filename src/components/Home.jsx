@@ -95,14 +95,7 @@ const Home = () => {
     specialty: "Diet planning, weight management",
     certifications: ["Certified Nutritionist", "ACE Certified"]
   },
-  {
-    name: "Emma",
-    role: "Functional Training Specialist",
-    image: "/images/emma.jpg",
-    experience: "9 years",
-    specialty: "CrossFit, functional fitness, mobility",
-    certifications: ["CrossFit Level 1", "Functional Training Specialist"]
-  }
+
   ];
 
   // Filter logic
