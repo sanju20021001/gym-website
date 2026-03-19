@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "../App.css";
 import hero from "../assets/hero.jpg";
-
+import john from "../assets/john.jpg";
+import lisa from "../assets/lisa.jpg";
+import mike from "../assets/mike.jpg";
+import sophia from "../assets/sophia.jpg";
 
 
 import Services from "./Services";
 import Contact from "./Contact";
+import About from "./About";
 
 const Home = () => {
   const [trainerSearch, setTrainerSearch] = useState(""); 
@@ -16,14 +20,14 @@ const Home = () => {
   const membershipPlans = [
   {
     name: "Basic",
-    price: "$20/month",
+    price: "Rs 2000/= per month",
     features: ["Gym access", "1 group class/week", "Basic support"],
     duration: "Monthly",
     perks: ["Locker access", "Free water bottle"]
   },
   {
     name: "Standard",
-    price: "$40/month",
+    price: "Rs 4000/= per month",
     badge: "Most Popular",
     features: ["Gym & pool access", "3 group classes/week", "Priority support"],
     duration: "Monthly",
@@ -31,7 +35,7 @@ const Home = () => {
   },
   {
     name: "Premium",
-    price: "$60/month",
+    price: "Rs 6000/= per month",
     badge: "Best Value",
     features: [
       "All-access pass",
@@ -44,7 +48,7 @@ const Home = () => {
   },
   {
     name: "Gold",
-    price: "$80/month",
+    price: "Rs 8000/= per month",
     badge: "Elite Plan",
     features: ["All-access pass", "Unlimited classes", "2 personal training sessions/week", "Spa access", "Sauna access"],
     duration: "Monthly",
@@ -58,42 +62,22 @@ const Home = () => {
   {
     name: "John",
     role: "Strength Coach",
-    image: "/images/john.jpg",
-    experience: "10 years",
-    specialty: "Weight training, muscle building",
-    certifications: ["ACE Certified", "CSCS"]
+    image: john,
   },
   {
     name: "Lisa",
     role: "Fitness Trainer",
-    image: "/images/lisa.jpg",
-    experience: "7 years",
-    specialty: "HIIT, group fitness classes",
-    certifications: ["NASM Certified", "Yoga Instructor"]
+    image: lisa,
   },
   {
     name: "Mike",
     role: "Cardio Expert",
-    image: "/images/mike.jpg",
-    experience: "5 years",
-    specialty: "Running, cycling, endurance training",
-    certifications: ["ACE Certified", "Spinning Instructor"]
+    image: mike,
   },
   {
     name: "Sophia",
     role: "Yoga & Wellness Coach",
-    image: "/images/sophia.jpg",
-    experience: "8 years",
-    specialty: "Yoga, mindfulness, flexibility",
-    certifications: ["RYT-200 Yoga Instructor", "Meditation Coach"]
-  },
-  {
-    name: "Daniel",
-    role: "Nutrition & Fitness Coach",
-    image: "/images/daniel.jpg",
-    experience: "6 years",
-    specialty: "Diet planning, weight management",
-    certifications: ["Certified Nutritionist", "ACE Certified"]
+    image: sophia,
   },
 
   ];
@@ -174,7 +158,7 @@ const Home = () => {
           Membership Plans
         </motion.h2>
 
-        {/* 🔍 Membership search */}
+       
         <input
           type="text"
           placeholder="Search Membership Plans..."
@@ -220,7 +204,6 @@ const Home = () => {
           Our Trainers
         </motion.h2>
 
-        {/* 🔍 Trainer search */}
         <input
           type="text"
           placeholder="Search Trainers..."
@@ -253,6 +236,7 @@ const Home = () => {
 
       {/* CONTACT */}
       <Contact />
+       <About />
     </>
   );
 };

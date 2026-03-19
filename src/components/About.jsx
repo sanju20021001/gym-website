@@ -41,9 +41,10 @@ export default function About() {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          We are a modern fitness center built for people who want real results.
-          Our expert trainers, high-quality equipment, and focused programs help
-          you train smarter, get stronger, and stay consistent.
+          Welcome to our brand new local fitness center! Our gym is designed to
+          provide a modern and welcoming environment for anyone looking to
+          improve their health and achieve their fitness goals.
+          
         </motion.p>
       </motion.div>
     </section>

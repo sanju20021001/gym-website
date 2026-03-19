@@ -1,4 +1,4 @@
-/*LIGHT MODE STYLES */
+/*========Light Mode Styles================== */
 body:not(.dark) {
   background-color: #eeeeee; 
   color: #111111;           
@@ -55,7 +55,6 @@ body:not(.dark) .contact-form {
   transition: all 0.3s ease;
 }
 
-/* Card hover in light mode */
 body:not(.dark) .service-card-simple:hover,
 body:not(.dark) .membership-section .card:hover,
 body:not(.dark) .trainers-section .card:hover,
@@ -579,7 +578,12 @@ body:not(.dark) .simple-contact {
   flex-wrap: wrap;
   gap: 30px;
 }
-
+.trainer-card img {
+  width: 100%;      
+  height: 250px;     
+  object-fit: cover; 
+  border-radius: 10px; 
+}
 /* CARD STYLE */
 .membership-section .card,
 .trainers-section .card {
