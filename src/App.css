@@ -1,26 +1,27 @@
-/* LIGHT MODE STYLES */
+/*LIGHT MODE STYLES */
 body:not(.dark) {
-  background-color: #fdfdfd; 
+  background-color: #eeeeee; 
   color: #111111;           
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
 body:not(.dark) .navbar {
-  background-color: #ffffff; 
+  background-color: #eeeeee; 
 }
 
 body:not(.dark) .nav-links a {
-  color: #111111; 
+  color: #d4a017; 
 }
 
 body:not(.dark) .active-link {
   font-weight: bold;
+  color: black; 
   text-decoration: underline;
 }
 
 body:not(.dark) .theme-btn {
-  background-color: #e0e0e0; 
-  color: #111111;
+  background-color: #d4a017; 
+  color:#fdfdfd;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -34,7 +35,7 @@ body:not(.dark) h1,
 body:not(.dark) h2,
 body:not(.dark) p,
 body:not(.dark) section {
-  color: #111111;
+  color: #d4a017;
   background-color: transparent;
   transition: color 0.3s, background-color 0.3s;
 }/* RESET */
@@ -43,15 +44,26 @@ body:not(.dark) section {
   padding: 0;
   box-sizing: border-box;
 }
-
-/* BODY */
-body {
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-  background: #0f172a;
-  color: white;
+/* Light mode cards */
+body:not(.dark) .service-card-simple,
+body:not(.dark) .membership-section .card,
+body:not(.dark) .trainers-section .card,
+body:not(.dark) .contact-form {
+  background-color: #222; 
+  border: 1px solid #222;
+  color: #111111; 
+  transition: all 0.3s ease;
 }
 
+/* Card hover in light mode */
+body:not(.dark) .service-card-simple:hover,
+body:not(.dark) .membership-section .card:hover,
+body:not(.dark) .trainers-section .card:hover,
+body:not(.dark) .contact-form:hover {
+  background-color: #222; 
+  border-color: #d4a017; 
+  transform: translateY(-3px);
+}
 /* NAVBAR */
 .navbar {
   display: flex;
@@ -66,7 +78,7 @@ body {
 
 /* LOGO */
 .logo img {
-  height: 75px;
+  height: 80px;
 }
 
 /* NAV LINKS */
@@ -107,22 +119,21 @@ body {
 }
 /* Hamburger icon */
 .menu-icon {
-  display: none; /* hidden on desktop */
+  display: none; 
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  z-index: 1001; /* make sure it's above the menu */
+  z-index: 1001; 
 }
 
 .menu-icon .bar {
   width: 25px;
   height: 3px;
-  background-color: white; /* change if needed for dark/light mode */
+  background-color: white; 
   border-radius: 3px;
   transition: all 0.3s ease;
 }
 
-/* Transform hamburger into X when open */
 .menu-icon .bar.open:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -177,7 +188,7 @@ body {
   padding-left: 150px;
 }
 
-/* Overlay for readability */
+/* Overlay */
 .hero::before {
   content: "";
   position: absolute;
@@ -185,11 +196,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
-/* Hero content on top of image */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -245,54 +255,7 @@ body {
 .hero-btn1:hover {
     transform: scale(1.05);
 }
-/* Responsive */
-@media (max-width: 768px) {
-  .hero {
-    justify-content: center;
-    text-align: center;
-    padding-left: 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .hero-content p {
-    font-size: 1.2rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  /* MOBILE NAVBAR STYLES */
-  .menu-icon {
-    display: flex; /* show hamburger */
-  }
-
-  .nav-links {
-    display: none; /* hidden by default */
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    background-color: black;
-    position: absolute;
-    top: 70px;
-    right: 0;
-    padding: 20px 0;
-  }
-
-  .nav-links.active {
-    display: flex; /* show when toggled */
-  }
-
-  .nav-links li {
-    padding: 10px 0;
-  }
-}
-/* Grid layout for services - side by side */
+/*Services */
 .service-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -656,6 +619,35 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+/* Light mode contact form inputs */
+body:not(.dark) .contact-form input,
+body:not(.dark) .contact-form textarea {
+  background-color: #e0e0e0;  
+  color: #e0e0e0;             
+  border: 1px solid #ccc;   
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Focus effect for light mode */
+body:not(.dark) .contact-form input:focus,
+body:not(.dark) .contact-form textarea:focus {
+  outline: none;
+  border-color: #d4a017;      
+  background-color: #f2f2f2;  
+}
+
+body:not(.dark) .simple-contact {
+  background-color: #ffffff; 
+  padding: 4rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
 
 
 /* ABOUT SECTION ONLY */
@@ -868,4 +860,99 @@ input[type=number]::-webkit-outer-spin-button {
 #spacer {
   height: 70px;
   border-top: 1px solid #333;
+}
+
+
+
+/* Membership & Trainer Cards */
+.membership-section .card,
+.trainers-section .card {
+  background: #111; /* dark ash background */
+  border: 1px solid #222; 
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: #ffffff; /* default text color */
+  width: 250px;   /* fixed width */
+  height: 350px;  /* fixed height */
+}
+
+/* Hover effect */
+.membership-section .card:hover,
+.trainers-section .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(212, 160, 23, 0.15);
+  border-color: #d4a017; /* gold border */
+}
+
+/* Card title in gold */
+.membership-section .card h3,
+.trainers-section .card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #d4a017; /* gold titles */
+}
+
+/* Other text in white */
+.membership-section .card p,
+.trainers-section .card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #ffffff; /* white description */
+  margin: 0;
+}
+
+/* Optional card icon */
+.membership-section .card .card-icon,
+.trainers-section .card .card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  background: rgba(212, 160, 23, 0.1);
+  color: #d4a017;
+}
+
+/* Simple search input style */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  margin: 20px 0;
+  border: 1px solid #ccc;        
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #f5f5f5;    
+  color: #111;                   
+}
+
+.search-input:focus {
+  border-color: #d4a017;         
+  box-shadow: 0 0 5px rgba(212,160,23,0.4);
+  background-color: #fff;        
+}
+
+/* Dark mode adjustments */
+body.dark .search-input {
+  background-color: #222;        
+  color: #fff;                     
+  border: 1px solid #444;         
+}
+
+body.dark .search-input:focus {
+  border-color: #d4a017;
+  box-shadow: 0 0 5px rgba(212,160,23,0.4);
+  background-color: #333;
 }
