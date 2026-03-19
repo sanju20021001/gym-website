@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaUser, FaEnvelope, FaComment } from "react-icons/fa";
+import emailjs from "emailjs-com";
 import "../App.css";
 
 const Contact = () => {
@@ -12,6 +13,7 @@ const Contact = () => {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validate = () => {
     let newErrors = {};
@@ -37,26 +39,44 @@ const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+
+    setFormData((prev) => ({
       ...prev,
       [name]: value
     }));
+
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
         [name]: ""
       }));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validate();
-    
+
     if (Object.keys(newErrors).length === 0) {
-      setSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setSubmitted(false), 3000);
+      setLoading(true);
+
+      try {
+        await emailjs.send(
+          "service_h315ggs",     
+          "template_xceya6g",   
+          formData,
+          "HoUWQ_IU4Yxy347tP"      
+        );
+
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+
+        setTimeout(() => setSubmitted(false), 3000);
+      } catch (error) {
+        alert("Failed to send message. Try again.");
+      }
+
+      setLoading(false);
     } else {
       setErrors(newErrors);
     }
@@ -77,82 +97,75 @@ const Contact = () => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="simple-contact"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.div 
+      {/* HEADER */}
+      <motion.div
         className="contact-header"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
       >
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
         >
           Contact Us
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
+
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           Have questions? We'd love to hear from you.
         </motion.p>
       </motion.div>
 
+      {/* SUCCESS MESSAGE */}
       <AnimatePresence>
         {submitted && (
-          <motion.div 
+          <motion.div
             className="success-message"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
           >
-            Thank you! Your message has been sent.
+            ✅ Thank you! Your message has been sent.
           </motion.div>
         )}
       </AnimatePresence>
 
-      <motion.form 
-        className="contact-form" 
+      {/* FORM */}
+      <motion.form
+        className="contact-form"
         onSubmit={handleSubmit}
         variants={staggerContainer}
         initial="initial"
         animate="animate"
       >
-        <motion.div 
-          className="form-group"
-          variants={fadeInUp}
-        >
-          <label htmlFor="name">
-            <FaUser className="form-icon" />
-            Name
+        {/* NAME */}
+        <motion.div className="form-group" variants={fadeInUp}>
+          <label>
+            <FaUser className="form-icon" /> Name
           </label>
+
           <motion.input
             type="text"
-            id="name"
             name="name"
             placeholder="Enter your name"
             value={formData.name}
             onChange={handleChange}
             className={errors.name ? "error" : ""}
             whileFocus={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
           />
+
           <AnimatePresence>
             {errors.name && (
-              <motion.span 
+              <motion.span
                 className="error-text"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
               >
                 {errors.name}
               </motion.span>
@@ -160,50 +173,38 @@ const Contact = () => {
           </AnimatePresence>
         </motion.div>
 
-        <motion.div 
-          className="form-group"
-          variants={fadeInUp}
-        >
-          <label htmlFor="email">
-            <FaEnvelope className="form-icon" />
-            Email
+        {/* EMAIL */}
+        <motion.div className="form-group" variants={fadeInUp}>
+          <label>
+            <FaEnvelope className="form-icon" /> Email
           </label>
+
           <motion.input
             type="email"
-            id="email"
             name="email"
             placeholder="Enter your email"
             value={formData.email}
             onChange={handleChange}
             className={errors.email ? "error" : ""}
             whileFocus={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
           />
+
           <AnimatePresence>
             {errors.email && (
-              <motion.span 
-                className="error-text"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-              >
+              <motion.span className="error-text">
                 {errors.email}
               </motion.span>
             )}
           </AnimatePresence>
         </motion.div>
 
-        <motion.div 
-          className="form-group"
-          variants={fadeInUp}
-        >
-          <label htmlFor="message">
-            <FaComment className="form-icon" />
-            Message
+        {/* MESSAGE */}
+        <motion.div className="form-group" variants={fadeInUp}>
+          <label>
+            <FaComment className="form-icon" /> Message
           </label>
+
           <motion.textarea
-            id="message"
             name="message"
             rows="5"
             placeholder="Enter your message"
@@ -211,32 +212,27 @@ const Contact = () => {
             onChange={handleChange}
             className={errors.message ? "error" : ""}
             whileFocus={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          ></motion.textarea>
+          />
+
           <AnimatePresence>
             {errors.message && (
-              <motion.span 
-                className="error-text"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-              >
+              <motion.span className="error-text">
                 {errors.message}
               </motion.span>
             )}
           </AnimatePresence>
         </motion.div>
 
-        <motion.button 
-          type="submit" 
+        {/* BUTTON */}
+        <motion.button
+          type="submit"
           className="submit-btn"
           variants={fadeInUp}
-          whileHover={{ scale: 1.05, backgroundColor: "#b8870f" }}
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
+          disabled={loading}
         >
-          Send Message
+          {loading ? "Sending..." : "Send Message"}
         </motion.button>
       </motion.form>
     </motion.div>
